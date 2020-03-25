@@ -1,0 +1,7 @@
+﻿
+<input type="text" @attributes="ParametrosArbitarios"/>
+@code {
+    //Este parámetro captura tolos los paramentros que no han sido definidos
+    [Parameter(CaptureUnmatchedValues = true)] 
+    public IDictionary<string, object> ParametrosArbitarios { get; set; }
+}
