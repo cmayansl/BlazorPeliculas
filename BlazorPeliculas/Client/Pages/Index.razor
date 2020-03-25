@@ -1,0 +1,84 @@
+﻿@page "/"
+
+
+
+@*<p>Hola, @UtilidadesString.enMayuscula(nombre)</p>
+
+<p>Vamos a sumar 2 + 2 = @(2+2)</p>
+
+<button @onclick="@(()=>Console.WriteLine("Me han presionado!!"))">Presioname</button>
+
+<button @onclick="@MetodoClick">Presioname desde método</button>
+
+<div>
+    <h3>Película</h3>
+    <p>Título: <b>@SpiderMan.Titulo</b></p>
+    <p>Lanzamiento: <b>@SpiderMan.Lanzamiento.ToString("dd/MM/yyyy")</b></p>
+</div>*@
+
+<div>
+    <h3>Películas</h3>
+    @*@foreach (var pelicula in ObtenerPeliculas())
+    {
+        <div>
+            <p>Título: <b>@pelicula.Titulo</b></p>
+            <p>Lanzamiento: <b>@pelicula.Lanzamiento.ToString("dd/MM/yyyy")</b></p>
+        </div>
+    }*@
+    @if (Peliculas == null)
+    {
+        <text>Cargando....</text>
+    }
+    else
+    {
+        @for (var i = 0; i < Peliculas.Count; i++)
+        {
+            <div>
+                <p>@(i+1)) Título: <b>@Peliculas[i].Titulo</b></p>
+                <p>Lanzamiento: <b>@Peliculas[i].Lanzamiento.ToString("dd/MM/yyyy")</b></p>
+            </div>
+
+        }
+    }
+
+
+</div>
+@code{
+    string nombre = "Cristina";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(3000);
+        Peliculas = ObtenerPeliculas();
+    }
+
+    public Pelicula SpiderMan { get { return ObtenerPelicula(); } }
+    //public List<Pelicula> Peliculas { get { return ObtenerPeliculas(); }
+    public List<Pelicula> Peliculas;
+
+    private Pelicula ObtenerPelicula()
+    {
+        return new Pelicula()
+        {
+            Titulo = "Spiderman",
+            Lanzamiento = new DateTime(2019, 12, 23)
+        };
+
+    }
+    private List<Pelicula> ObtenerPeliculas()
+    {
+        return new List<Pelicula>
+        {
+            new Pelicula() {Titulo = "Spiderman1",Lanzamiento = new DateTime(2015, 1, 2)},
+            new Pelicula() {Titulo = "Spiderman2",Lanzamiento = new DateTime(2017, 7, 13)},
+            new Pelicula() {Titulo = "Spiderman3",Lanzamiento = new DateTime(2019, 12, 23)}
+
+        };
+    }
+    //string enMayuscula(string valor) => valor.ToUpper();
+    private void MetodoClick()
+    {
+        Console.WriteLine("Me han presionado desde el método!!");
+
+    }
+}
