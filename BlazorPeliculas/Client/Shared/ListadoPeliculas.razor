@@ -12,11 +12,14 @@ else if (Peliculas.Count == 0)
 }
 else
 {
-    <input type="checkbox" @onchange="MostrarOcultarBotones"/>
+    @*<input type="checkbox" @onchange="MostrarOcultarBotones" />*@
+    //Data binding - permite sincronizar una variable con
+    //elementos html o componentes
+    <input type="checkbox" @bind="MostrarBotones" />
 
     @foreach (var pelicula in Peliculas)
     {
-        <PeliculaIndividual Pelicula="pelicula" MostrarBoton="MostrarBotones"/>
+        <PeliculaIndividual Pelicula="pelicula" MostrarBoton="MostrarBotones" />
     }
 }
 @code {
@@ -28,10 +31,10 @@ else
     //    //await Task.Delay(3000);
     //    Peliculas = ObtenerPeliculas();
     //}
-    private void MostrarOcultarBotones()
-    {
-        MostrarBotones = !MostrarBotones;
-    }
+    //private void MostrarOcultarBotones()
+    //{
+    //    MostrarBotones = !MostrarBotones;
+    //}
 
 
 
