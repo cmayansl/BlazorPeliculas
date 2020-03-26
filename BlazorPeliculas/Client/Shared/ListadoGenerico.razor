@@ -1,0 +1,44 @@
+﻿@typeparam Titem
+@if (Listado == null)
+{
+
+    @if (Cargando == null)
+    {
+        <text>Cargando....</text>
+    }
+    else
+    {
+        @Cargando
+    }
+}
+else if (Listado.Count == 0)
+{
+
+    @if (NoHayRegistros == null)
+    {
+        <text>No hay registros para mostrar.</text>
+    }
+    else
+    {
+        @NoHayRegistros
+    }
+}
+else
+{
+    foreach(var elem in Listado)
+    {
+        // Se define en el componente Padre
+        @HayRegistro(elem)
+    }
+}
+@code {
+    // RenderFragment
+    [Parameter] public RenderFragment Cargando { get; set; }
+    [Parameter] public RenderFragment NoHayRegistros { get; set; }
+
+    // RenderFragmen con parametros
+    [Parameter] public RenderFragment <Titem> HayRegistro { get; set; }
+
+    // Este parámetro puede ser de cualquier tipo de lista
+    [Parameter] public List<Titem> Listado { get; set; }
+}
