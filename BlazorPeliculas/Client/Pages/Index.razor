@@ -4,7 +4,15 @@
     <div>
         <h3>Películas</h3>
 
-       <ListadoPeliculas Peliculas="ObtenerPeliculas()" /> 
+        <ListadoPeliculas Peliculas="ObtenerPeliculas()">
+            <Cargando>
+                <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" />
+                <text>Cargando....</text>
+            </Cargando>
+            <NoHayRegistros>
+                <text>No hay registros para mostrar.</text>
+            </NoHayRegistros>
+        </ListadoPeliculas>
 
 
     </div>
@@ -14,7 +22,7 @@
         <EjemploTextBox @attributes="ParametrosEjemplos" />
     </div>*@
 @code{
-        string nombre = "Cristina";
+    string nombre = "Cristina";
 
     private Dictionary<string,object> ParametrosEjemplos =
         new Dictionary<string, object>() {
@@ -22,6 +30,7 @@
 
     private List<Pelicula> ObtenerPeliculas()
     {
+
         return new List<Pelicula>
         {
             new Pelicula() {Titulo = "Spiderman1",Lanzamiento = new DateTime(2015, 1, 2)},
