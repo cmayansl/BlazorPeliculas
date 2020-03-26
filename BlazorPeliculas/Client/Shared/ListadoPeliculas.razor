@@ -19,7 +19,8 @@ else
 
     @foreach (var pelicula in Peliculas)
     {
-        <PeliculaIndividual Pelicula="pelicula" MostrarBoton="MostrarBotones" />
+        <PeliculaIndividual Pelicula="pelicula" EliminarPelicula="EliminarPelicula"
+                            MostrarBoton="MostrarBotones" />
     }
 }
 @code {
@@ -36,7 +37,18 @@ else
     //    MostrarBotones = !MostrarBotones;
     //}
 
+    // Sin parametro
+    //void EliminarPelicula()
+    //{
+    //    Console.WriteLine($"Se ha eliminado la película ");
+    //}
 
 
+    // Con parametro
+    void EliminarPelicula(Pelicula peli)
+    {
+        Peliculas.Remove(peli);
+        Console.WriteLine($"Se ha eliminado la película {peli.Titulo}");
+    }
 
 }

@@ -3,9 +3,15 @@
     <p>Lanzamiento: <b>@Pelicula.Lanzamiento.ToString("dd/MM/yyyy")</b></p>
     @if (MostrarBoton)
     {
-        <div>
-            <button @onclick="EliminarPelicula">Borrar</button>
-        </div>
+<div>
+
+    @*Sin parámetos*@
+    @*<button @onclick="EliminarPelicula">Borrar</button>*@
+
+    @*Devuelve parámetos*@
+
+    <button @onclick="@(() => EliminarPelicula.InvokeAsync(Pelicula))">Borrar</button>
+</div>
     }
 
 </div>
@@ -13,8 +19,15 @@
 @code {
     [Parameter] public Pelicula Pelicula { get; set; }
     [Parameter] public bool MostrarBoton { get; set; } = false;
-    void EliminarPelicula()
-    {
-        Console.WriteLine($"Eliminar pelicula {Pelicula.Titulo}");
-    }
+
+    // Paso por parámetro de un método del componente padre
+
+    //  Sin parámetos
+    //[Parameter] public EventCallback EliminarPelicula { get; set; }
+
+
+    //  Devuelve parámetos
+    [Parameter] public EventCallback <Pelicula> EliminarPelicula { get; set; }
+
+
 }
