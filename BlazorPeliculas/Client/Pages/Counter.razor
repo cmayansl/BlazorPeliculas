@@ -1,24 +1,14 @@
 ﻿@page "/counter"
-@inject ServicioSingleton singleton
-@inject ServicioTransient transient
+
+@inherits CounterBase
 
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
-<p>singleton count: @singleton.Valor</p>
-<p>transient count: @transient.Valor</p>
+<p>singleton count: @Singleton.Valor</p>
+<p>transient count: @Transient.Valor</p>
 
 
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        currentCount++;
-        singleton.Valor = currentCount;
-        transient.Valor = currentCount;
-    }
-}
