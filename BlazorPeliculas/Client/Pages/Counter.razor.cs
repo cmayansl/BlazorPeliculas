@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,26 @@ namespace BlazorPeliculas.Client.Pages
          [Inject] protected ServicioSingleton Singleton { get; set; }
         [Inject] protected ServicioTransient Transient { get; set; }
 
-        protected int currentCount = 0;
+        [Inject] protected IJSRuntime JS { get; set; }
 
-        protected void IncrementCount()
+        protected int currentCount = 0;
+        static int currentCountStatic = 0;
+
+        protected async  void IncrementCount()
         {
+           
+
             currentCount++;
             Singleton.Valor = currentCount;
-            Transient.Valor = currentCount;
+            Transient.Valor = currentCount; 
+            currentCountStatic++;
+            await JS.InvokeVoidAsync("PruebaPuntoNetEstatico");
+        }
+
+        [JSInvokable]
+        public static Task ObtenerCurrentCount()
+        {
+            return Task.FromResult(currentCountStatic);
         }
     }
 }
