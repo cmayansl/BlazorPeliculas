@@ -58,7 +58,7 @@
     // Con parametro
     async Task EliminarPelicula(Pelicula peli)
     {
-        var confirmado = await js.InvokeAsync<bool>("confirm", $"Desea borrar la película {peli.Titulo}");
+        var confirmado = await js.Confirm($"Desea borrar la película {peli.Titulo}");
 
         if (confirmado)
         {
