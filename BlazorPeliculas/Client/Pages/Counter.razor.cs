@@ -14,6 +14,8 @@ namespace BlazorPeliculas.Client.Pages
 
         [Inject] protected IJSRuntime JS { get; set; }
 
+        [CascadingParameter] protected string Color { get; set; }
+
         protected int currentCount = 0;
         static int currentCountStatic = 0;
 
