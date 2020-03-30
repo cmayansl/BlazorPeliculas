@@ -5,3 +5,6 @@
             console.log(" Conteo desde javascript " + resultado);
         })
 }
+function PruebaPuntoNetInstancia(donetHelpers) {
+    donetHelpers.invokeMethodAsync("IncrementCount")
+}
