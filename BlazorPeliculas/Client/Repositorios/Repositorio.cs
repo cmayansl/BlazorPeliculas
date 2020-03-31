@@ -12,9 +12,11 @@ namespace BlazorPeliculas.Client.Repositorios
         {
             return new List<Pelicula>
             {
-                new Pelicula() {Titulo = "Spiderman1",Lanzamiento = new DateTime(2015, 1, 2)},
-                new Pelicula() {Titulo = "Spiderman2",Lanzamiento = new DateTime(2017, 7, 13)},
-                new Pelicula() {Titulo = "Spiderman3",Lanzamiento = new DateTime(2019, 12, 23)}
+                new Pelicula() {Titulo = "Spiderman1",
+                    Lanzamiento = new DateTime(2015, 1, 2),
+                    Poster="poster1.jpg"},
+                new Pelicula() {Titulo = "Spiderman2",Lanzamiento = new DateTime(2017, 7, 13),Poster="poster1.jpg"},
+                new Pelicula() {Titulo = "Spiderman3",Lanzamiento = new DateTime(2019, 12, 23),Poster="poster1.jpg"}
 
             };
         }

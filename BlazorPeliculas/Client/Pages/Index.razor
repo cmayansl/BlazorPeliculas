@@ -1,8 +1,6 @@
 ﻿@page "/"
-@inject ServicioSingleton singleton
 @inject IRepositorio repositorio
 
-<p>el valor de singleton es: @singleton.Valor</p>
 <div>
     <h3>Películas</h3>
 
@@ -12,44 +10,17 @@
 
 
 </div>
-<div>
-    <button @onclick="AgregarPelicula"> Add Película</button>
-</div>
-@*<div>
-        <h2>Crear Nueva película</h2>
 
-        <EjemploTextBox @attributes="ParametrosEjemplos" />
-    </div>*@
 @code{
-    string nombre = "Cristina";
-
-
-    private Dictionary<string, object> ParametrosEjemplos =
-        new Dictionary<string, object>() {
-            { "placeholder","Nueva película"},{"disabled","true" } };
-
+    
+   
     private List<Pelicula> peliculas;
 
     protected override void OnInitialized()
     {
         peliculas = repositorio.ObtenerPeliculas();
     }
-    private List<Pelicula> ObtenerPeliculas()
-    {
-
-        return new List<Pelicula>
-        {
-                new Pelicula() {Titulo = "Spiderman1",Lanzamiento = new DateTime(2015, 1, 2)},
-                new Pelicula() {Titulo = "Spiderman2",Lanzamiento = new DateTime(2017, 7, 13)},
-                new Pelicula() {Titulo = "Spiderman3",Lanzamiento = new DateTime(2019, 12, 23)}
-
-            };
-    }
-
-    private void AgregarPelicula()
-    {
-        peliculas.Add(new Pelicula() { Titulo = "Nueva pelicula", Lanzamiento = DateTime.Today });
-    }
+   
 
 
 }

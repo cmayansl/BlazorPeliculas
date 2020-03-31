@@ -15,9 +15,6 @@ namespace BlazorPeliculas.Client.Pages
 
         [Inject] protected IJSRuntime JS { get; set; }
 
-        [CascadingParameter] protected AppState appState { get; set; }
-
-
 
 
 
