@@ -1,7 +1,14 @@
 ﻿@page "/personas/crear"
 
-<h3>CrearPersona</h3>
+  <h3>Crear Persona</h3>
+<FormularioPersona OnValidSummit="Crear" persona="persona" />
 
 @code {
-
+    private Persona persona = new Persona();
+    private void Crear()
+    {
+        Console.WriteLine("Ejecutando método Crear");
+        Console.WriteLine($"Nombre de la persona: {persona.Nombre}");
+        Console.WriteLine($"FechaNacimiento: {persona.FechaNacimiento}");
+    }
 }
